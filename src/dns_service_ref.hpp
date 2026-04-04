@@ -3,6 +3,8 @@
 
 #include <fcntl.h>
 
+#include "nan_compat.hpp"
+
 namespace node_mdns {
 
 class ServiceRef : public Nan::ObjectWrap {
@@ -33,8 +35,8 @@ class ServiceRef : public Nan::ObjectWrap {
         bool SetSocketFlags();
 
     private:
-        static NAN_GETTER(fd_getter);
-        static NAN_GETTER(initialized_getter);
+        static MDNS_GETTER(fd_getter);
+        static MDNS_GETTER(initialized_getter);
 
         DNSServiceRef ref_;
         Nan::Persistent<v8::Function> callback_;

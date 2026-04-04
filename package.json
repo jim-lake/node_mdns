@@ -1,6 +1,6 @@
 {
   "name": "mdns",
-  "version": "2.7.2-private2",
+  "version": "2.7.2-private3",
   "description": "multicast DNS service discovery",
   "main": "./lib/mdns.js",
   "scripts": {

@@ -31,7 +31,7 @@ TxtRecordRef::Initialize(Local<Object> target) {
 NAN_METHOD(TxtRecordRef::New) {
     TxtRecordRef * o = new TxtRecordRef();
     o->Wrap(info.Holder());
-    info.GetReturnValue().Set(info.This());
+    info.GetReturnValue().Set(info.Holder());
 }
 
 } // end of namespace node_mdns

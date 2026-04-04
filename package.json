@@ -1,9 +1,10 @@
 {
   "name": "mdns",
-  "version": "2.7.2-private1",
+  "version": "2.7.2-private2",
   "description": "multicast DNS service discovery",
   "main": "./lib/mdns.js",
   "scripts": {
+    "build": "node-gyp rebuild",
     "test": "node utils/testrun"
   },
   "keywords": [

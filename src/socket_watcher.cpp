@@ -117,8 +117,8 @@ namespace node_mdns {
 
     NAN_METHOD(SocketWatcher::New) {
         SocketWatcher *s = new SocketWatcher();
-        s->Wrap(info.This());
-        info.GetReturnValue().Set(info.This());
+        s->Wrap(info.Holder());
+        info.GetReturnValue().Set(info.Holder());
     }
 
     NAN_METHOD(SocketWatcher::Set) {

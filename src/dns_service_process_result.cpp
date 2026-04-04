@@ -19,7 +19,7 @@ NAN_METHOD(DNSServiceProcessResult) {
     }
 
     ServiceRef * ref = Nan::ObjectWrap::Unwrap<ServiceRef>(ToObject(info[0]));
-    ref->SetThis(info.This());
+    ref->SetThis(info.Holder());
     DNSServiceErrorType error = DNSServiceProcessResult(ref->GetServiceRef());
     if (error != kDNSServiceErr_NoError) {
         return throwMdnsError(error);

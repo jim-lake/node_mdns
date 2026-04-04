@@ -43,7 +43,7 @@ NAN_METHOD(ServiceRef::New) {
     }
     ServiceRef * o = new ServiceRef();
     o->Wrap(info.Holder());
-    info.GetReturnValue().Set(info.This());
+    info.GetReturnValue().Set(info.Holder());
 }
 
 bool
@@ -102,7 +102,7 @@ ServiceRef::SetSocketFlags() {
 }
 
 NAN_GETTER(ServiceRef::fd_getter) {
-    ServiceRef * service_ref = Nan::ObjectWrap::Unwrap<ServiceRef>(info.This());
+    ServiceRef * service_ref = Nan::ObjectWrap::Unwrap<ServiceRef>(info.Holder());
     int fd = -1;
     if (service_ref->ref_) {
         fd = DNSServiceRefSockFD(service_ref->ref_);
@@ -116,7 +116,7 @@ NAN_GETTER(ServiceRef::fd_getter) {
 }
 
 NAN_GETTER(ServiceRef::initialized_getter) {
-    ServiceRef * service_ref = Nan::ObjectWrap::Unwrap<ServiceRef>(info.This());
+    ServiceRef * service_ref = Nan::ObjectWrap::Unwrap<ServiceRef>(info.Holder());
     info.GetReturnValue().Set(Nan::New<Boolean>(service_ref->IsInitialized()));
 }
 

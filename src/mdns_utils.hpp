@@ -83,7 +83,9 @@ ToString(v8::Local<v8::Value> v) {
 inline
 int
 Utf8Length(v8::Local<v8::Value> v) {
-#if (NODE_MODULE_VERSION >= NODE_11_0_MODULE_VERSION)
+#if defined(V8_MAJOR_VERSION) && V8_MAJOR_VERSION >= 13
+  return static_cast<int>(ToString(v)->Utf8LengthV2(v8::Isolate::GetCurrent()));
+#elif (NODE_MODULE_VERSION >= NODE_11_0_MODULE_VERSION)
   return ToString(v)->Utf8Length(v8::Isolate::GetCurrent());
 #else
   return ToString(v)->Utf8Length();

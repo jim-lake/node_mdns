@@ -49,7 +49,7 @@ void defineFunction(Local<Object> target, const char * name, Nan::FunctionCallba
 void addConstants(Local<Object> target);
 
 void
-init(Local<Object> target) {
+init(Local<Object> target, Local<Value> /*module*/, void* /*priv*/) {
     Nan::HandleScope scope;
 
     ServiceRef::Initialize( target );

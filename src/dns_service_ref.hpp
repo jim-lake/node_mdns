@@ -33,8 +33,8 @@ class ServiceRef : public Nan::ObjectWrap {
         bool SetSocketFlags();
 
     private:
-        static NAN_PROPERTY_GETTER(fd_getter);
-        static NAN_PROPERTY_GETTER(initialized_getter);
+        static NAN_GETTER(fd_getter);
+        static NAN_GETTER(initialized_getter);
 
         DNSServiceRef ref_;
         Nan::Persistent<v8::Function> callback_;

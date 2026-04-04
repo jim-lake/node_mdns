@@ -101,20 +101,21 @@ ServiceRef::SetSocketFlags() {
 #endif
 }
 
-NAN_PROPERTY_GETTER(ServiceRef::fd_getter) {
+NAN_GETTER(ServiceRef::fd_getter) {
     ServiceRef * service_ref = Nan::ObjectWrap::Unwrap<ServiceRef>(info.This());
     int fd = -1;
     if (service_ref->ref_) {
         fd = DNSServiceRefSockFD(service_ref->ref_);
         if (fd == -1) {
-            return Nan::ThrowError("DNSServiceRefSockFD() failed");
+            Nan::ThrowError("DNSServiceRefSockFD() failed");
+            return;
         }
     }
     Local<Integer> v = Nan::New<Integer>(fd);
     info.GetReturnValue().Set(v);
 }
 
-NAN_PROPERTY_GETTER(ServiceRef::initialized_getter) {
+NAN_GETTER(ServiceRef::initialized_getter) {
     ServiceRef * service_ref = Nan::ObjectWrap::Unwrap<ServiceRef>(info.This());
     info.GetReturnValue().Set(Nan::New<Boolean>(service_ref->IsInitialized()));
 }
